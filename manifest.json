@@ -1,18 +1,21 @@
 {
-    "manifest_version": 3,
-    "name": "Brave a Google Search",
-    "version": "1.0",
-    "description": "Cambia las URLs de búsqueda de Brave a Google",
-    "permissions": [
-      "activeTab"
-    ],
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "128": "icon128.png"
-      }
-    },
-    "icons": {
-      "128": "icon128.png"
+  "manifest_version": 3,
+  "name": "Brave a Google Search",
+  "version": "1.0",
+  "description": "Cambia las URLs de búsqueda de Brave a Google",
+  "author": "https://github.com/686f6c61",
+  "permissions": [
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon128.png",
+      "256": "icon256.png"
     }
+  },
+  "icons": {
+    "128": "icon128.png",
+    "256": "icon256.png"
   }
+}

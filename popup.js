@@ -10,11 +10,11 @@ document.getElementById('changeButton').addEventListener('click', function() {
         if (chrome.runtime.lastError) {
           document.getElementById('status').textContent = 'Error: ' + chrome.runtime.lastError.message;
         } else {
-          document.getElementById('status').textContent = 'Cambiado a Google con éxito';
+          document.getElementById('status').textContent = 'Cambiado a Google';
         }
       });
     } else {
-      document.getElementById('status').textContent = 'Esta página no es de Brave Search';
+      document.getElementById('status').textContent = 'No es Brave Search';
     }
   });
 });
