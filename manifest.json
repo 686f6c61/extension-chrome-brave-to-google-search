@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Brave a Google Search",
-  "version": "1.0",
+  "name": "Brave 2 Google Search",
+  "version": "0.3",
   "description": "Cambia las URLs de búsqueda de Brave a Google",
   "author": "https://github.com/686f6c61",
   "permissions": [
