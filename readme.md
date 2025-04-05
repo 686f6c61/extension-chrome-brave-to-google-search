@@ -9,7 +9,7 @@
 [<img src="https://www.google.com/favicon.ico" width="32" alt="Google">](https://www.google.com) &nbsp;&nbsp;
 [<img src="https://www.bing.com/favicon.ico" width="32" alt="Bing">](https://www.bing.com) &nbsp;&nbsp;
 [<img src="https://duckduckgo.com/favicon.ico" width="32" alt="DuckDuckGo">](https://duckduckgo.com) &nbsp;&nbsp;
-[<img src="https://chat.openai.com/favicon.ico" width="32" alt="OpenAI">](https://chat.openai.com)
+[<img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" width="32" alt="OpenAI">](https://chat.openai.com)
 
 _Convierte tus búsquedas de Brave a Google, DuckDuckGo, Bing y OpenAI con un solo clic_
 
