@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Brave 2 Google Search</title>
+  <title>Brave Search Converter</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <style>
@@ -78,11 +78,18 @@
       color: #212121;
     }
     
-    #changeButton {
+    .search-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .search-button {
       background-color: #212121;
       color: white;
       border: none;
-      padding: 12px 16px;
+      padding: 12px 10px;
       border-radius: 4px;
       font-family: 'Roboto', sans-serif;
       font-weight: 500;
@@ -92,21 +99,40 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
     }
     
-    #changeButton i {
+    .search-button i {
       margin-right: 8px;
+    }
+    
+    #googleButton i {
       color: #4285F4;
     }
     
-    #changeButton:hover {
+    #duckduckgoButton i {
+      color: #DE5833;
+    }
+    
+    #bingButton i {
+      color: #008373;
+    }
+    
+    #openaiButton i {
+      color: #10A37F;
+    }
+    
+    .search-button:hover {
       background-color: #000000;
     }
     
-    #changeButton:active {
+    .search-button:active {
       transform: scale(0.98);
+    }
+    
+    .search-button:disabled {
+      background-color: #555555;
+      cursor: not-allowed;
     }
     
     .footer {
@@ -148,20 +174,31 @@
   <div class="header">
     <div class="logo">
       <i class="fas fa-exchange-alt"></i>
-      <span class="brave">Brave</span> 2 <span class="google">Google Search</span>
+      <span class="brave">Brave</span> Search Converter
     </div>
   </div>
   
   <div class="status-container">
-    <p id="status"><i class="fas fa-info-circle"></i> Haz clic para cambiar a Google Search</p>
+    <p id="status"><i class="fas fa-info-circle"></i> Selecciona un motor de búsqueda</p>
   </div>
   
-  <button id="changeButton">
-    <i class="fab fa-google"></i> Cambiar a Google Search
-  </button>
+  <div class="search-buttons">
+    <button id="googleButton" class="search-button">
+      <i class="fab fa-google"></i> Google
+    </button>
+    <button id="duckduckgoButton" class="search-button">
+      <i class="fab fa-d-and-d"></i> DuckDuckGo
+    </button>
+    <button id="bingButton" class="search-button">
+      <i class="fab fa-microsoft"></i> Bing
+    </button>
+    <button id="openaiButton" class="search-button">
+      <i class="fas fa-robot"></i> OpenAI
+    </button>
+  </div>
   
   <div class="footer">
-    <p>Versión 0.3 | <a href="https://github.com/686f6c61/extension-chrome-brave-to-google-search" target="_blank">GitHub</a></p>
+    <p>Versión 0.4 | <a href="https://github.com/686f6c61/extension-chrome-brave-to-google-search" target="_blank">GitHub</a></p>
   </div>
   
   <script src="popup.js"></script>

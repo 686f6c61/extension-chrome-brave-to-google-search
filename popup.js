@@ -30,18 +30,33 @@ function updateStatus(message, type = 'info') {
   }
 }
 
-// Función para animar el botón durante el proceso
-function animateButton(isProcessing = false) {
-  const button = document.getElementById('changeButton');
+// Función para animar botones durante el proceso
+function animateButtons(isProcessing = false, buttonId = null) {
+  const buttons = document.querySelectorAll('.search-button');
+  const iconMap = {
+    'googleButton': '<i class="fab fa-google" style="color: #4285F4;"></i> Google',
+    'duckduckgoButton': '<i class="fab fa-d-and-d" style="color: #DE5833;"></i> DuckDuckGo',
+    'bingButton': '<i class="fab fa-microsoft" style="color: #008373;"></i> Bing',
+    'openaiButton': '<i class="fas fa-robot" style="color: #10A37F;"></i> OpenAI'
+  };
   
-  if (isProcessing) {
-    button.innerHTML = '<i class="fas fa-spinner fa-spin" style="color: #4285F4;"></i> Procesando...';
-    button.disabled = true;
-    button.style.backgroundColor = '#555555';
+  if (isProcessing && buttonId) {
+    // Desactivar todos los botones
+    buttons.forEach(button => {
+      button.disabled = true;
+      button.style.backgroundColor = '#555555';
+    });
+    
+    // Mostrar animación solo en el botón seleccionado
+    const selectedButton = document.getElementById(buttonId);
+    selectedButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
   } else {
-    button.innerHTML = '<i class="fab fa-google" style="color: #4285F4;"></i> Cambiar a Google Search';
-    button.disabled = false;
-    button.style.backgroundColor = '#212121';
+    // Restaurar todos los botones
+    buttons.forEach(button => {
+      button.innerHTML = iconMap[button.id];
+      button.disabled = false;
+      button.style.backgroundColor = '#212121';
+    });
   }
 }
 
@@ -50,37 +65,47 @@ document.addEventListener('DOMContentLoaded', function() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     let currentTab = tabs[0];
     if (currentTab.url.startsWith('https://search.brave.com/search?')) {
-      updateStatus('Listo para cambiar a Google Search', 'info');
+      updateStatus('¿A qué motor deseas cambiar?', 'info');
     } else {
       updateStatus('No estás en Brave Search', 'warning');
-      document.getElementById('changeButton').disabled = true;
-      document.getElementById('changeButton').style.backgroundColor = '#555555';
+      // Desactivar todos los botones
+      document.querySelectorAll('.search-button').forEach(button => {
+        button.disabled = true;
+        button.style.backgroundColor = '#555555';
+      });
     }
   });
 });
 
-// Manejar el clic en el botón
-document.getElementById('changeButton').addEventListener('click', function() {
+// Función para cambiar el motor de búsqueda
+function changeSearchEngine(engineName, engineUrl) {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     let currentTab = tabs[0];
     if (currentTab.url.startsWith('https://search.brave.com/search?')) {
-      // Animar el botón mientras se procesa
-      animateButton(true);
+      // Animar botones mientras se procesa
+      const buttonId = {
+        'Google': 'googleButton',
+        'DuckDuckGo': 'duckduckgoButton',
+        'Bing': 'bingButton',
+        'OpenAI': 'openaiButton'
+      }[engineName];
+      
+      animateButtons(true, buttonId);
       
       let url = new URL(currentTab.url);
       let query = url.searchParams.get('q');
-      let newUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+      let newUrl = `${engineUrl}${encodeURIComponent(query)}`;
       
       // Pequeña demora para mostrar la animación
       setTimeout(() => {
         chrome.tabs.update(currentTab.id, {url: newUrl}, function() {
           if (chrome.runtime.lastError) {
             updateStatus('Error: ' + chrome.runtime.lastError.message, 'error');
-            animateButton(false);
+            animateButtons(false);
           } else {
-            updateStatus('¡Cambiado a Google con éxito!', 'success');
+            updateStatus(`¡Cambiado a ${engineName} con éxito!`, 'success');
             setTimeout(() => {
-              animateButton(false);
+              animateButtons(false);
             }, 1000);
           }
         });
@@ -89,4 +114,21 @@ document.getElementById('changeButton').addEventListener('click', function() {
       updateStatus('No estás en una página de Brave Search', 'warning');
     }
   });
+}
+
+// Manejar clics en cada botón
+document.getElementById('googleButton').addEventListener('click', function() {
+  changeSearchEngine('Google', 'https://www.google.com/search?q=');
+});
+
+document.getElementById('duckduckgoButton').addEventListener('click', function() {
+  changeSearchEngine('DuckDuckGo', 'https://duckduckgo.com/?q=');
+});
+
+document.getElementById('bingButton').addEventListener('click', function() {
+  changeSearchEngine('Bing', 'https://www.bing.com/search?q=');
+});
+
+document.getElementById('openaiButton').addEventListener('click', function() {
+  changeSearchEngine('OpenAI', 'https://chat.openai.com/?q=');
 });
