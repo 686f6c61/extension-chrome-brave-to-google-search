@@ -4,12 +4,12 @@
 
 <img src="icon256.png" alt="Brave Search Converter Logo" width="128px" height="128px">
 
-<div style="display: flex; justify-content: center; margin-top: 20px; margin-bottom: 20px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Logo" width="48px" height="48px" style="margin: 0 10px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Bing_logo.svg/512px-Bing_logo.svg.png" alt="Bing Logo" width="48px" height="48px" style="margin: 0 10px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/DuckDuckGo_logo.svg/512px-DuckDuckGo_logo.svg.png" alt="DuckDuckGo Logo" width="48px" height="48px" style="margin: 0 10px;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png" alt="OpenAI Logo" width="48px" height="48px" style="margin: 0 10px;">
-</div>
+### Motores de búsqueda soportados:
+
+[<img src="https://www.google.com/favicon.ico" width="32" alt="Google">](https://www.google.com) &nbsp;&nbsp;
+[<img src="https://www.bing.com/favicon.ico" width="32" alt="Bing">](https://www.bing.com) &nbsp;&nbsp;
+[<img src="https://duckduckgo.com/favicon.ico" width="32" alt="DuckDuckGo">](https://duckduckgo.com) &nbsp;&nbsp;
+[<img src="https://chat.openai.com/favicon.ico" width="32" alt="OpenAI">](https://chat.openai.com)
 
 _Convierte tus búsquedas de Brave a Google, DuckDuckGo, Bing y OpenAI con un solo clic_
 
