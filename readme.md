@@ -27,7 +27,7 @@ _Convierte tus búsquedas de Brave a Google con un solo clic_
 
 ## 🖼️ Capturas de pantalla
 
-_La interfaz muestra un diseño elegante, minimalista y fácil de usar:_
+![Captura de pantalla de la extensión](imagen.png)
 
 - Panel principal con el título "Brave 2 Google Search"
 - Indicador de estado que muestra si estás en una página de Brave Search
